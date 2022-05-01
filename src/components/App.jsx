@@ -1,6 +1,9 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Accordion from "./Accordion";
-
+import Search from "./Search";
+import Dropdown from "./Dropdown";
+import axios from "axios";
+import Translate from "./Translate";
 const dataAccordion = [
   {
     savol:
@@ -41,8 +44,100 @@ const dataAccordion = [
   },
 ];
 
+const dataDropdown = [
+  {
+    label: "The color Red",
+    value: "red",
+  },
+  {
+    label: "The color Green",
+    value: "green",
+  },
+  {
+    label: "The color blue",
+    value: "blue",
+  },
+  {
+    label: "The color orange",
+    value: "orange",
+  },
+  {
+    label: "The color gray",
+    value: "gray",
+  },
+];
+let b;
+const olish = async (arg) => {
+  const data = await axios.get("https://en.wikipedia.org/w/api.php?", {
+    params: {
+      action: "query",
+      list: "search",
+      format: "json",
+      origin: "*",
+      srsearch: arg,
+    },
+  });
+
+  // setResults(data.data.query.search);
+  let mal = data.data.query.search;
+  console.log(mal);
+  return { mal };
+};
+const getDropdown = function (e) {
+  console.log(e);
+};
+const router = () => {
+  if (window.location.pathname === "/search") {
+    return <Search olibKel={olish} />;
+  } else if (window.location.pathname === "/accordion") {
+    return <Accordion data={dataAccordion} />;
+  } else if (window.location.pathname === "/translate") {
+    return <Translate />;
+  } else if (window.location.pathname === "/dropdown") {
+    return (
+      <Dropdown
+        data={dataDropdown}
+        getData={getDropdown}
+        label="Translate to"
+        // chiqarish={result}
+      />
+    );
+  }
+};
 const App = () => {
-  return <Accordion data={dataAccordion} />;
+  return (
+    <div>
+      <div className="ui pointing menu">
+        <a href="/" className="active item">
+          Accordion
+        </a>
+        <a href="/dropdown" className="item">
+          DropDown
+        </a>
+        <a href="/search" className="item">
+          Search
+        </a>
+        <a href="/translate" className="item">
+          Translate
+        </a>
+        <div className="right menu">
+          <div className="item">
+            <div className="ui transparent icon input">
+              <input type="text" placeholder="Search..." />
+              <i className="search link icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="ui segment">
+        <p>{router()}</p>
+      </div>
+    </div>
+  );
+  // return <Translate />;
+  // return <Dropdown data={dataDropdown} />;
+  // return <Search olibKel={olish} />;
+  // return <Accordion data={dataAccordion} />;
 };
 
 export default App;
