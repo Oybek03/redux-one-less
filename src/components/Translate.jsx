@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Dropdown from "./Dropdown";
 const dataDropdown = [
   {
@@ -20,6 +20,7 @@ const dataDropdown = [
   },
 ];
 const Translate = () => {
+
   const [term, setTerm] = useState("");
   const [translate, setTranslate] = useState("");
   const [result, setResult] = useState("");
