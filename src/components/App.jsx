@@ -4,6 +4,9 @@ import Search from "./Search";
 import Dropdown from "./Dropdown";
 import axios from "axios";
 import Translate from "./Translate";
+import Youtube from "./Youtube";
+import Weather from "./Weather";
+import Header from "./Header";
 const dataAccordion = [
   {
     savol:
@@ -89,7 +92,7 @@ const getDropdown = function (e) {
 const router = () => {
   if (window.location.pathname === "/search") {
     return <Search olibKel={olish} />;
-  } else if (window.location.pathname === "/accordion") {
+  } else if (window.location.pathname === "/") {
     return <Accordion data={dataAccordion} />;
   } else if (window.location.pathname === "/translate") {
     return <Translate />;
@@ -102,34 +105,18 @@ const router = () => {
         // chiqarish={result}
       />
     );
+  } else if (window.location.pathname === "/youtube") {
+    return <Youtube />;
+  } else if (window.location.pathname === "/weather") {
+    return <Weather />;
   }
 };
+
 const App = () => {
   return (
     <div>
-      <div className="ui pointing menu">
-        <a href="/" className="active item">
-          Accordion
-        </a>
-        <a href="/dropdown" className="item">
-          DropDown
-        </a>
-        <a href="/search" className="item">
-          Search
-        </a>
-        <a href="/translate" className="item">
-          Translate
-        </a>
-        <div className="right menu">
-          <div className="item">
-            <div className="ui transparent icon input">
-              <input type="text" placeholder="Search..." />
-              <i className="search link icon"></i>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="ui segment">
+        <Header />
         <p>{router()}</p>
       </div>
     </div>
@@ -141,66 +128,3 @@ const App = () => {
 };
 
 export default App;
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       index: null,
-//     };
-//   }
-//   getIndex = (key1) => {
-//     this.setState({ index: key1 });
-//   };
-
-//   renderData() {
-//     return data.map((val, key) => {
-//       let active;
-//       if (this.state.index == key) {
-//         active = "active";
-//       }
-//       return (
-//         <div>
-//           <div className="ui inverted segment">
-//             <div className="ui inverted accordion">
-//               <div
-//                 className={"title " + active}
-//                 onClick={() => {
-//                   return this.getIndex(key);
-//                 }}
-//               >
-//                 <i className="dropdown icon"></i>
-//                 <h3 style={{ color: "green" }}> {val.savol}</h3>
-//               </div>
-//               <div className={"content " + active}>
-//                 <p className="transition">{val.javob}</p>
-//               </div>
-//             </div>
-//           </div>
-//           {/* <div className="ui styled accordion">
-//               <div
-//                 className={"title " + active}
-//                 onClick={() => {
-//                   return this.getIndex(key);
-//                 }}
-//               >
-//                 <i className="dropdown icon"></i>
-//                 {val.savol}
-//               </div>
-//               <div className={"content " + active}>
-//                 <p
-//                   className="transition visible"
-//                   style={{ display: "block !important" }}
-//                 >
-//                   {val.javob}
-//                 </p>
-//               </div>
-//             </div> */}
-//         </div>
-//       );
-//     });
-//   }
-//   render() {
-//     return <div>{this.renderData()}</div>;
-//   }
-// }

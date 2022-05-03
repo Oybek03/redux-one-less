@@ -6,7 +6,7 @@ const Accordion = (props) => {
   const dataRender = () => {
     return props.data.map((val, key) => {
       return (
-        <div key={key}>
+        <div key={key} className="ui container">
           <div
             onClick={() => {
               setIndex(key);

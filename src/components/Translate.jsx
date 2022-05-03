@@ -14,6 +14,10 @@ const dataDropdown = [
     label: "Arabic",
     value: "ar",
   },
+  {
+    label: "russian",
+    value: "ru",
+  },
 ];
 const Translate = () => {
   const [term, setTerm] = useState("");
