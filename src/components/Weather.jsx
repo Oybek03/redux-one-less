@@ -25,7 +25,7 @@ const Weather = () => {
           APPID: API_Key,
         },
       });
-      console.log();
+
       setTemperatura(data.main.temp);
       setShaxar(data.name);
     };
@@ -60,7 +60,7 @@ const Weather = () => {
           />
           <div className="weather-title">
             <h1 className="harorat">
-              {temperatura} °C
+              {temperatura}
               <i className="ui icon cloud"></i>
             </h1>
             {/* <sup>02.05.2022</sup> */}
