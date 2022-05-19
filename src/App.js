@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@mui/material/Button";
+import { Accordion, Button, Switch } from "@mui/material";
 
 const App = () => {
   return (
@@ -7,7 +7,10 @@ const App = () => {
       <Button variant="contained" color="primary">
         Contained
       </Button>
-
+      <Switch defaultChecked />
+      <Switch />
+      <Switch disabled defaultChecked />
+      <Switch disabled />
       {/* <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
         <VolumeDown />
         <Slider aria-label="Volume" value={value} onChange={handleChange} />
