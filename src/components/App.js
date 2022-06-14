@@ -2,8 +2,7 @@ import { compose } from "redux";
 import React from "react";
 
 const App = () => {
-  console.clear();
-
+  const initialState = [];
   const qush = (val) => {
     return val + 5;
   };
@@ -39,5 +38,16 @@ const App = () => {
   const store = Redux.createStore(dos);
   const app = store.dispatch(personAction("jafar", 8));
   console.log(app);
+
+  const action2 = (price, color) => {
+    return {
+      type: "CAR",
+      payload: {
+        price: price,
+        color: color,
+      },
+    };
+  };
+  const reducer2 = (state = initialState, action) => {};
 };
 export default App;
