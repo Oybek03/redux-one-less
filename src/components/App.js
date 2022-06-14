@@ -1,4 +1,4 @@
-import { compose } from "redux";
+import { compose,createStore } from "redux";
 import React from "react";
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
   const kupay = (val) => {
     return val * 5;
   };
-  const natija = Redux.compose(ayir, qush, kupay);
+  const natija =compose(ayir, qush, kupay);
   console.log(natija(10));
   //////
 
@@ -35,7 +35,7 @@ const App = () => {
     }
     return state;
   };
-  const store = Redux.createStore(dos);
+  const store = createStore(dos);
   const app = store.dispatch(personAction("jafar", 8));
   console.log(app);
 
@@ -48,6 +48,14 @@ const App = () => {
       },
     };
   };
-  const reducer2 = (state = initialState, action) => {};
+  const reducer2 = (state = initialState, action) => {
+    if (action.type === "CAR") {
+      return [...state, action.payload];
+    }
+    return state;
+  };
+  const store1 =createStore(reducer2);
+  const app1 = store1.dispatch(action2("malibu", "black"));
+  console.log(app1);
 };
 export default App;
